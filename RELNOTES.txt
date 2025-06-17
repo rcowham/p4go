@@ -1,0 +1,117 @@
+                           Release Notes for
+                       P4Go, P4 API for Golang
+
+                            Version 2025.1
+
+Introduction
+
+    This document lists all user-visible changes to P4Go
+    from release 2025.1, the first supported P4Go release.
+
+    Perforce numbers releases YYYY.R/CCCCC, e.g. 2025.1/2766466.
+    YYYY is the year; R is the release of that year; CCCCC is the
+    bug fix change level. Each bug fix in these release notes is
+    marked by its change number. Any build includes (1) all bug fixes
+    of all previous releases and (2) all bug fixes of the current
+    release up to the bug fix change level.
+
+    The application versions of P4Go and P4 C/C++ API must align.
+    For example, P4Go 2025.1 requires 2025.1 P4 C/C++ API.
+
+--------------------------------------------------------------------------
+
+Important Product Rebrand Notice
+
+    Helix Core is now P4
+    Perforce has a new look and logo that reflects our place in DevOps
+    workflows. As part of these changes, Helix Core is now P4. Name updates
+    and new icons to align with the P4 branding will be rolled out soon.
+    To learn more, see:
+      https://www.perforce.com/blog/vcs/introducing-the-p4-platform
+
+--------------------------------------------------------------------------
+
+Building P4Go from Source
+
+    The official version of P4Go exists as source on:
+    https://github.com/perforce/p4go
+
+    Instructions for building are in the BUILD.md file which can be found
+    here - https://github.com/perforce/p4go/blob/master/build.md
+
+--------------------------------------------------------------------------
+
+Compatibility Statements
+
+    Server Compatibility
+
+      This release of P4Go supports the 2025.1 P4 Server.
+      Older releases might work but are not supported.
+
+    API Compatibility
+
+      This release of P4Go supports the 2025.1 P4 C/C++ API
+      (2025.1/2761706). Older releases might work but are not supported.
+
+    Golang Compatibility
+
+      This release of P4Go supports the Go 1.24.x. 
+      Older releases might work but are not supported.
+
+    OpenSSL Compatibility
+    
+      To build P4Go application with encrypted communication support, 
+      you must use the version of OpenSSL that P4 C/C++ API has 
+      been built against.
+
+      Executables linked against the P4 C/C++ API libraries must also be linked against 
+      real OpenSSL libraries: The latest OpenSSL version 3 is recommended
+
+    Platform Compatibility
+
+      While P4Go is generally portable, this release is certified
+      only on the following platforms:
+
+        Windows for Intel(x64)
+            Server 2022
+        Linux kernel 2.6+ for Intel(x86_64)
+            Ubuntu 22.04, 24.04
+            RockyLinux 9
+        Linux kernel 2.6+ for ARM(aarch64)
+            Ubuntu 22.04, 24.04
+            RockyLinux 9
+        MACOS ARM64
+            12+
+        MACOS x86_64
+            12+
+
+      The above platforms are tested and subject to regression testing on a 
+      frequent basis. Errors or bugs discovered in these platforms are prioritized
+      for correction. Any platform not listed above is not actively tested by
+      Perforce. P4Go may run on platforms that are not actively tested.
+
+    Compiler Compatibility
+
+      To build P4Go application from source, you must use a version of P4Go that
+      has been compiled with the same compiler used to build the
+      P4 C/C++ API: for most platforms, use gcc/g++.
+
+      Attempting to use a different compiler or a different version
+      of the compiler causes linker errors due to differences in name
+      handling between compilers.
+
+    Known Limitations
+
+      The P4 client-server protocol is not designed to support
+      multiple concurrent queries over the same connection. For this
+      reason, multi-threaded applications using the P4 C/C++ API or the
+      script APIs (P4Perl, P4Ruby, P4Go etc.) should ensure that a
+      separate connection is used for each thread or that only one
+      thread may use a shared connection at a time.
+
+--------------------------------------------------------------------------
+
+New functionalities in 2025.1 (2025.1/2780067) (2025/06/11)
+
+    #2764902 (Job #125777)
+        Added support of 2025.1 P4 C/C++ API (2025.1/2761706)
