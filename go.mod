@@ -1,4 +1,4 @@
-module p4
+module github.com/rcowham/p4go/p4
 
 go 1.24
 
